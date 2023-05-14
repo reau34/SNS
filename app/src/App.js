@@ -3,6 +3,7 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import ChatPage from "./pages/ChatPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import "react-bootstrap/dist/react-bootstrap.min.js"
 
 export default function App() {
   return (
