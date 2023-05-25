@@ -22,7 +22,11 @@ const userSchema=new mongoose.Schema({
     avatarImage:{
         type:String,
         default:""
-    }
+    },
+    friends:[{
+        type:mongoose.Types.ObjectId,
+        ref:"Users"
+    }]
 })
 
 module.exports=mongoose.model("Users",userSchema)

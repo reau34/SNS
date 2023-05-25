@@ -52,9 +52,27 @@ module.exports.set_avatar=async(req,res)=>{
 
 module.exports.get_users=async(req,res)=>{
     const id=req.params.id
-    const users=await User.find({_id:{$ne:req.params.id}}).select([
+    const users=await User.find({_id:{$ne:id}}).select([
         "username",
         "avatarImage"
     ])
     return res.json(users)
+}
+
+module.exports.add_friend=async(req,res)=>{
+    const id=req.body.id
+    const friendId=req.body.friendId
+    await User.findByIdAndUpdate(id,{
+        $push:{friends:friendId}
+    })
+    await User.findByIdAndUpdate(friendId,{
+        $push:{friends:id}
+    })
+    return res.json({message:"OK"})
+}
+
+module.exports.get_friends=async(req,res)=>{
+    const id=req.body.id
+    const friends = await User.find({_id:id}).populate({path:"friends",select:["_id","username","avatarImage"]})
+    return res.json(friends)
 }
