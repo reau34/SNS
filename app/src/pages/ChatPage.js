@@ -3,6 +3,7 @@ import DefaultNavbar from "../components/DefaultNavbar"
 import FriendList from "../components/FriendList"
 
 export default function ChatPage(){
+    //tutaj container rowsy i columny
     return(
         <>
             <DefaultNavbar />

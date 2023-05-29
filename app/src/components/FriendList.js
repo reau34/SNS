@@ -9,10 +9,10 @@ export default function FriendList(){
     const user=JSON.parse(localStorage.getItem("user"))
     useEffect(()=>{
         Axios.post("http://localhost:3001/api/auth/get_friends",{id:user._id}).then((response)=>{
-            setFriends(response.data)
+            setFriends(response.data[0].friends)
         })
     },[])
-    const currentChat=()=>{
+    const setChat=()=>{
         console.log("elo")
     }
     return(
