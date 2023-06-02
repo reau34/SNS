@@ -14,7 +14,7 @@ export default function UsersTable(){
         Axios.post(`http://localhost:3001/api/auth/get_users/${user._id}`).then((response)=>{
             setUsers(response.data)
         })
-    },[])
+    },[users])
 
     const totalPages=Math.ceil(users.length/rowsPerPage)
     const usersOnPage=[...users].slice((activePage-1)*rowsPerPage,activePage*rowsPerPage)

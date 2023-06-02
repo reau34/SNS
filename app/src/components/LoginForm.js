@@ -21,7 +21,6 @@ export default function LoginForm(){
             if(!response.data.status){
                 alert(response.data.message)
             }else{
-                console.log(response.data.user)
                 localStorage.setItem("user",JSON.stringify(response.data.user))
                 navigate("/chat")
             }

@@ -52,9 +52,12 @@ module.exports.set_avatar=async(req,res)=>{
 
 module.exports.get_users=async(req,res)=>{
     const id=req.params.id
-    const users=await User.find({_id:{$ne:id},"friends._id":{$ne:id}}).select([
+    const user=await User.findById(id)
+    const friends=user.friends
+    const users=await User.find({_id:{$nin:[id,...friends]}}).select([
         "username",
-        "avatarImage"
+        "avatarImage",
+        "_id"
     ])
     return res.json(users)
 }
